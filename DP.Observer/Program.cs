@@ -13,20 +13,27 @@ namespace DP.Observer
     {
         static void Main(string[] args)
         {
-            //定义被观察对象
-            AllyControlCenter acc = new ConcreteAllyControlCenter("金庸群侠");
-            //定义4个观察者对象
-            IObserver playerA = new Player() { Name = "杨过" };
-            acc.Join(playerA);
-            IObserver playerB = new Player() { Name = "令狐冲" };
-            acc.Join(playerB);
-            IObserver playerC = new Player() { Name = "张无忌" };
-            acc.Join(playerC);
-            IObserver playerD = new Player() { Name = "段誉" };
-            acc.Join(playerD);
+            #region Event优雅方式
+            Test.Start();
+            #endregion
 
-            //当某盟友遭受攻击
-            playerA.BeAttacked(acc);
+            #region 普通观察者
+            ////定义被观察对象
+            //AllyControlCenter acc = new ConcreteAllyControlCenter("金庸群侠");
+            ////定义4个观察者对象
+            //IObserver playerA = new Player() { Name = "杨过" };
+            //acc.Join(playerA);
+            //IObserver playerB = new Player() { Name = "令狐冲" };
+            //acc.Join(playerB);
+            //IObserver playerC = new Player() { Name = "张无忌" };
+            //acc.Join(playerC);
+            //IObserver playerD = new Player() { Name = "段誉" };
+            //acc.Join(playerD);
+
+            ////当某盟友遭受攻击
+            //playerA.BeAttacked(acc); 
+            #endregion
         }
+
     }
 }
