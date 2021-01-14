@@ -7,28 +7,45 @@ namespace Sorting
 {
     public static class SortingHelper<T> where T:IComparable
     {
-        #region 插值排序
+        #region 插入排序
         /// <summary>
-        /// 直接插入排序 O(n)~O(n2)
+        /// 直接插入排序 O(n)~O(n2) 类似于扑克牌插入
         /// 将一个记录插入到已经排好序的有序表中，从而得到一个新的、记录数增1的有序表。
         /// </summary>
         public static void StraightInsertSort(T[] arr)
         {
-            int i,j;
-            T tmp;
-            for (i = 1; i < arr.Length; i++)
+            for (var i = 1; i < arr.Length; i++)
             {
-                j = i - 1;
-                tmp = arr[i];
-
-                //index位跟前一位比较，小就把前一位插入到index位，j--循环
-                while (j >= 0 && tmp.CompareTo(arr[j]) < 0)
+                T tmp = arr[i];
+                for (var j = i - 1; j >= 0; j--)
                 {
-                    arr[j + 1] = arr[j]; 
-                    j--;
+                    if (tmp.CompareTo(arr[j])<0) //(tmp < arr[j])
+                    {
+                        arr[j + 1] = arr[j];
+                        arr[j] = tmp;
+                    }
+                    else
+                        break;
                 }
-                arr[j + 1] = tmp;
             }
+
+            #region 复杂
+            //int i, j;
+            //T tmp;
+            //for (i = 1; i < arr.Length; i++)
+            //{
+            //    j = i - 1;
+            //    tmp = arr[i];
+
+            //    //index位跟前一位比较，小就把前一位插入到index位，j--循环
+            //    while (j >= 0 && tmp.CompareTo(arr[j]) < 0)
+            //    {
+            //        arr[j + 1] = arr[j];
+            //        j--;
+            //    }
+            //    arr[j + 1] = tmp;
+            //} 
+            #endregion
         }
         /// <summary>
         /// 加入哨兵版直接插入排序
@@ -87,25 +104,42 @@ namespace Sorting
         /// </summary>
         public static void BubbleSort(T[] arr)
         {
-            int i, j;
-            T tmp;
-            bool isExchanged = true; //需要避免因已经有序的情况下的无意义循环判断
-
-            for (j = 1; j < arr.Length && isExchanged; j++) //循环n-1
+            for (var i = 0; i < arr.Length - 1; i++)
             {
-                isExchanged = false;
-                for (i = 0; i < arr.Length - j; i++)
+                for (var j = 1; j < arr.Length; j++)
                 {
-                    //跟后一个数比较，大，就互换位置
-                    if (arr[i].CompareTo(arr[i+1]) > 0)
+                    if (arr[j - 1].CompareTo(arr[j])>0) //(arr[j - 1] > arr[j])
                     {
-                        tmp = arr[i];
-                        arr[i] = arr[i+1];
-                        arr[i+1] = tmp;
-                        isExchanged = true;
+                        var tmp = arr[j - 1];
+                        arr[j - 1] = arr[j];
+                        arr[j] = tmp;
                     }
                 }
+                Show(arr);
             }
+
+            #region 复杂
+            //int i, j;
+            //T tmp;
+            //bool isExchanged = true; //需要避免因已经有序的情况下的无意义循环判断
+
+            //for (j = 1; j < arr.Length && isExchanged; j++) //循环n-1
+            //{
+            //    isExchanged = false;
+            //    for (i = 0; i < arr.Length - j; i++)
+            //    {
+            //        //跟后一个数比较，大，就互换位置
+            //        if (arr[i].CompareTo(arr[i + 1]) > 0)
+            //        {
+            //            tmp = arr[i];
+            //            arr[i] = arr[i + 1];
+            //            arr[i + 1] = tmp;
+            //            isExchanged = true;
+            //        }
+            //    }
+            //    Show(arr);
+            //} 
+            #endregion
         }
         #endregion
 
@@ -168,28 +202,45 @@ namespace Sorting
         /// <param name="arr"></param>
         public static void SimpleSelectSort(T[] arr)
         {
-            int i, j, k;
-            T temp;
-
-            for (i = 0; i < arr.Length - 1; i++)
+            for (var i = 0; i < arr.Length - 1; i++)
             {
-                k = i; // k用于记录每一趟排序中最小元素的索引号
-                for (j = i + 1; j < arr.Length; j++)
+                for (var j = i + 1; j < arr.Length; j++)
                 {
-                    if (arr[j].CompareTo(arr[k]) < 0)
+                    if (arr[i].CompareTo(arr[j])>0)//(arr[i] > arr[j])
                     {
-                        k = j;
+                        var tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
                     }
                 }
-
-                if (k != i)
-                {
-                    // 交换arr[k]和arr[i]
-                    temp = arr[k];
-                    arr[k] = arr[i];
-                    arr[i] = temp;
-                }
+                Show(arr);
             }
+
+            #region 复杂
+            //int i, j, k;
+            //T temp;
+
+            //for (i = 0; i < arr.Length - 1; i++)
+            //{
+            //    k = i; // k用于记录每一趟排序中最小元素的索引号
+            //    for (j = i + 1; j < arr.Length; j++)
+            //    {
+            //        if (arr[j].CompareTo(arr[k]) < 0)
+            //        {
+            //            k = j;
+            //        }
+            //    }
+
+            //    if (k != i)
+            //    {
+            //        // 交换arr[k]和arr[i]
+            //        temp = arr[k];
+            //        arr[k] = arr[i];
+            //        arr[i] = temp;
+            //    }
+            //    Show(arr);
+            //} 
+            #endregion
         }
         #endregion
 
@@ -302,5 +353,14 @@ namespace Sorting
             }
         }
         #endregion
+
+        public static void Show(T[] arr)
+        {
+            for (var i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i].ToString() + " ");
+            }
+            Console.WriteLine("");
+        }
     }
 }

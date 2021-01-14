@@ -11,35 +11,36 @@ namespace Sorting
             //{
             //    SortingHelper<int>.StraightInsertSort(arr);
             //});
-            var arr1=InitializeData(100000);
-            Utility.CodeTimerHelper.Time("希尔排序", 1, () =>
-            {
-                SortingHelper<int>.ShellSort(arr1);
-            });
+            //var arr1=InitializeData(100000);
+            //Utility.CodeTimerHelper.Time("希尔排序", 1, () =>
+            //{
+            //    SortingHelper<int>.ShellSort(arr1);
+            //});
             //var arr2 = InitializeData(10000);
             //Utility.CodeTimerHelper.Time("冒泡", 1, () =>
             //{
             //    SortingHelper<int>.BubbleSort(arr2);
             //});
-            var arr3 = InitializeData(100000);
-            Utility.CodeTimerHelper.Time("快速排序", 1, () =>
-            {
-                SortingHelper<int>.QuickSort(arr3,0, arr3.Length - 1);
-            });
-            var arr4 = InitializeData(100000);
-            Utility.CodeTimerHelper.Time("堆排序", 1, () =>
-            {
-                SortingHelper<int>.HeapSort(arr4);
-            });
+            //var arr3 = InitializeData(100000);
+            //Utility.CodeTimerHelper.Time("快速排序", 1, () =>
+            //{
+            //    SortingHelper<int>.QuickSort(arr3,0, arr3.Length - 1);
+            //});
+            //var arr4 = InitializeData(100000);
+            //Utility.CodeTimerHelper.Time("堆排序", 1, () =>
+            //{
+            //    SortingHelper<int>.HeapSort(arr4);
+            //});
             //PrintData(arr3);
 
-            int[] arrTest = { 5, 4, 3, 2, 1 };
-            SortingHelper<int>.BubbleSort(arrTest);
+            int[] arrTest = { 5, 8, 3, 6, 1, 9, 7, 4, 2 };
             PrintData(arrTest);
+            SortingHelper<int>.BubbleSort(arrTest);
+           
 
             //ConsoleColor currentForeColor = Console.ForegroundColor;
             //Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
         }
 
         #region 帮助函数
@@ -66,14 +67,14 @@ namespace Sorting
         }
         static void PrintData(int[] arr)
         {
-            Console.WriteLine("----------------------------------------------------\r\n");
+            Console.WriteLine("----------------------------------------------------");
             for (int i = 0, count = 1; i < arr.Length; i++, count++)
             {
                 if (count % 10 == 0)
                 {
                     count = 1;
                     Console.Write(arr[i]);
-                    Console.WriteLine();
+                    //Console.WriteLine();
                 }
                 else
                 {
