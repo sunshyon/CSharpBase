@@ -51,6 +51,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.行为型", "03.行为�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A.Sorting", "A.Sorting\A.Sorting.csproj", "{3F699A7F-9B5B-4E69-A778-1310235B5071}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A.Search", "A.Search\A.Search.csproj", "{51FD33AB-E143-48B3-967F-8CAFF1F71396}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{3F699A7F-9B5B-4E69-A778-1310235B5071}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F699A7F-9B5B-4E69-A778-1310235B5071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F699A7F-9B5B-4E69-A778-1310235B5071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51FD33AB-E143-48B3-967F-8CAFF1F71396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FD33AB-E143-48B3-967F-8CAFF1F71396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FD33AB-E143-48B3-967F-8CAFF1F71396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51FD33AB-E143-48B3-967F-8CAFF1F71396}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -154,6 +160,7 @@ Global
 		{9E97FD7D-BFE5-452A-8B74-087B18668309} = {099A7834-AEB7-4696-9ED9-F79F169F3A4D}
 		{099A7834-AEB7-4696-9ED9-F79F169F3A4D} = {78DBCBAC-65B6-4BA1-AAE7-20C6AD165653}
 		{3F699A7F-9B5B-4E69-A778-1310235B5071} = {943325AD-CBE7-4FF6-9724-FF41657DD658}
+		{51FD33AB-E143-48B3-967F-8CAFF1F71396} = {943325AD-CBE7-4FF6-9724-FF41657DD658}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {97BC30B8-BD45-4AAC-9D2F-0752F845082E}

@@ -70,33 +70,6 @@ namespace Sorting
         }
         #endregion
 
-        #region 希尔排序
-        /// <summary>
-        /// 希尔排序 O(n1.3)
-        /// 将待排序的记录分成几组，从而减少参与直接插入排序的数据量，当经过几次分组之后，记录的排列已经基本有序，这时再对所有记录实施直接插入排序
-        /// </summary>
-        public static void ShellSort(T[] arr)
-        {
-            int i, j, d;
-            T tmp;
-
-            for (d = arr.Length / 2; d >= 1; d = d / 2)
-            {
-                for (i = d; i < arr.Length; i++)
-                {
-                    j = i - d;
-                    tmp = arr[i];
-                    while (j >= 0 && tmp.CompareTo(arr[j]) < 0)
-                    {
-                        arr[j + d] = arr[j];
-                        j = j - d;
-                    }
-                    arr[j + d] = tmp;
-                }
-            }
-        }
-        #endregion
-
         #region 冒泡排序
         /// <summary>
         /// 冒泡排序 O(n2)
@@ -108,7 +81,7 @@ namespace Sorting
             {
                 for (var j = 1; j < arr.Length; j++)
                 {
-                    if (arr[j - 1].CompareTo(arr[j])>0) //(arr[j - 1] > arr[j])
+                    if (arr[j - 1].CompareTo(arr[j]) > 0) //(arr[j - 1] > arr[j])
                     {
                         var tmp = arr[j - 1];
                         arr[j - 1] = arr[j];
@@ -143,57 +116,6 @@ namespace Sorting
         }
         #endregion
 
-        #region 快速排序
-        /// <summary>
-        /// 快速排序 O(nlog2n) 
-        /// 通过一趟排序将待排记录分割成独立的两部分，其中一部分记录的关键字均比另一部分记录的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序的目的
-        /// </summary>
-        /// <param name="low">起始位</param>
-        /// <param name="hight">最后位</param>
-        public static void QuickSort(T[] arr,int low,int high)
-        {
-            if (low < high)
-            {
-                int index = Partition(arr, low, high);
-                // 对左区间递归排序
-                QuickSort(arr, low, index - 1);
-                // 对右区间递归排序
-                QuickSort(arr, index + 1, high);
-            }
-        }
-        /// <summary>
-        /// 快速排序 核心代码
-        /// </summary>
-        private static int Partition(T[] arr,int low,int high)
-        {
-            int i = low, j = high;
-            T tmp = arr[i];//确定第一个元素作为“基准值”
-
-            while (i < j)
-            {
-                // 从右向左扫描直到找到比基准值小的元素
-                while (i < j && arr[j].CompareTo(tmp) >= 0)
-                {
-                    j--;
-                }
-                // 将比基准值小的元素移动到基准值的左端
-                arr[i] = arr[j];
-
-                // 从左向右扫描直到找到比基准值大的元素
-                while (i < j && arr[i].CompareTo(tmp) <= 0)
-                {
-                    i++;
-                }
-                // 将比基准值大的元素移动到基准值的右端
-                arr[j] = arr[i];
-
-                // 记录归位
-                arr[i] = tmp;
-            }
-            return i;
-        }
-        #endregion
-
         #region 选择排序
         /// <summary>
         /// 选择排序 O(n2)
@@ -206,7 +128,7 @@ namespace Sorting
             {
                 for (var j = i + 1; j < arr.Length; j++)
                 {
-                    if (arr[i].CompareTo(arr[j])>0)//(arr[i] > arr[j])
+                    if (arr[i].CompareTo(arr[j]) > 0)//(arr[i] > arr[j])
                     {
                         var tmp = arr[i];
                         arr[i] = arr[j];
@@ -244,6 +166,84 @@ namespace Sorting
         }
         #endregion
 
+        #region 希尔排序
+        /// <summary>
+        /// 希尔排序 O(n1.3)
+        /// 将待排序的记录分成几组，从而减少参与直接插入排序的数据量，当经过几次分组之后，记录的排列已经基本有序，这时再对所有记录实施直接插入排序
+        /// </summary>
+        public static void ShellSort(T[] arr)
+        {
+            int i, j, d;
+            T tmp;
+
+            for (d = arr.Length / 2; d >= 1; d = d / 2)
+            {
+                for (i = d; i < arr.Length; i++)
+                {
+                    j = i - d;
+                    tmp = arr[i];
+                    while (j >= 0 && tmp.CompareTo(arr[j]) < 0)
+                    {
+                        arr[j + d] = arr[j];
+                        j = j - d;
+                    }
+                    arr[j + d] = tmp;
+                }
+            }
+        }
+        #endregion
+
+        #region 快速排序
+        /// <summary>
+        /// 快速排序 O(nlog2n) 
+        /// 通过一趟排序将待排记录分割成独立的两部分，其中一部分记录的关键字均比另一部分记录的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序的目的
+        /// </summary>
+        /// <param name="low">起始位</param>
+        /// <param name="hight">最后位</param>
+        public static void QuickSort(T[] arr, int low, int high)
+        {
+            if (low < high)
+            {
+                int index = Partition(arr, low, high);
+                // 对左区间递归排序
+                QuickSort(arr, low, index - 1);
+                // 对右区间递归排序
+                QuickSort(arr, index + 1, high);
+            }
+        }
+        /// <summary>
+        /// 快速排序 核心代码
+        /// </summary>
+        private static int Partition(T[] arr, int low, int high)
+        {
+            int i = low, j = high;
+            T tmp = arr[i];//确定第一个元素作为“基准值”
+
+            while (i < j)
+            {
+                // 从右向左扫描直到找到比基准值小的元素
+                while (i < j && arr[j].CompareTo(tmp) >= 0)
+                {
+                    j--;
+                }
+                // 将比基准值小的元素移动到基准值的左端
+                arr[i] = arr[j];
+
+                // 从左向右扫描直到找到比基准值大的元素
+                while (i < j && arr[i].CompareTo(tmp) <= 0)
+                {
+                    i++;
+                }
+                // 将比基准值大的元素移动到基准值的右端
+                arr[j] = arr[i];
+
+                // 记录归位
+                arr[i] = tmp;
+            }
+            return i;
+        }
+        #endregion
+
         #region 堆排序
         /// <summary>
         /// 堆排序 O(nlog2n)
@@ -252,7 +252,7 @@ namespace Sorting
         public static void HeapSort(T[] arr)
         {
             int n = arr.Length; // 获取序列的长度
-                                // 构造初始堆
+            // 构造初始大顶堆
             for (int i = n / 2 - 1; i >= 0; i--)
             {
                 Sift(arr, i, n - 1);
@@ -268,6 +268,9 @@ namespace Sorting
                 Sift(arr, 0, i - 1); // 重新递归调整堆
             }
         }
+        /// <summary>
+        /// 创建调整堆
+        /// </summary>
         private static void Sift(T[] arr, int low, int high)
         {
             // i为欲调整子树的根节点索引号，j为这个节点的左孩子
@@ -302,8 +305,8 @@ namespace Sorting
 
         #region 二路归并排序
         /// <summary>
-        /// 二路归并排序O(nlog2n)
-        /// 利用两个有序序列的合并实现归并排序
+        /// 二路归并排序O(nlogn)
+        /// 利用两个有序序列的合并实现归并排序  （先分再合）
         /// </summary>
         /// <param name="arr"></param>
         /// <param name="low"></param>
@@ -318,7 +321,9 @@ namespace Sorting
                 Merge(arr, low, mid, high);     // 归并当前前序列
             }
         }
-
+        /// <summary>
+        /// 合并
+        /// </summary>
         private static void Merge(T[] arr, int low, int mid, int high)
         {
             // result为临时空间，用于存放合并后的序列
