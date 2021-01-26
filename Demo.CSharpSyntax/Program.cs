@@ -1,4 +1,7 @@
 ﻿using System;
+using Utility;
+using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Demo.CSharpSyntax
 {
@@ -6,7 +9,7 @@ namespace Demo.CSharpSyntax
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }
